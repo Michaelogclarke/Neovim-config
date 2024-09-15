@@ -69,7 +69,17 @@ require("lazy").setup({
  
 
   -- Git integration
-  { "tpope/vim-fugitive" },                                     -- Git commands within Neovim
+  { "tpope/vim-fugitive" },    -- Git commands within Neovim
+
+{
+  "NeogitOrg/neogit",
+  dependencies = {
+    "nvim-lua/plenary.nvim",         -- required
+    "sindrets/diffview.nvim",        -- optional - Diff integration
+  },
+  config = true
+},
+
 
   -- File Explorer
   { "nvim-tree/nvim-tree.lua" },                                -- File explorer
