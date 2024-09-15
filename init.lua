@@ -81,7 +81,7 @@ require("lazy").setup({
 },
 
 
-  -- File Explorer
+-- File Explorer
   { "nvim-tree/nvim-tree.lua" },                                -- File explorer
 
  -- Catppuiccin
