@@ -67,10 +67,41 @@ require("lazy").setup({
   { "hrsh7th/nvim-cmp" },                                       -- Autocompletion plugin
   { "L3MON4D3/LuaSnip" },                                      -- Snippets
  
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require('laspconfig').setup()
+    end
+  },
 
+
+  -- Add this to your Lazy.nvim setup
+{
+  'neoclide/coc.nvim',
+  branch = 'release',
+  config = function()
+    -- Coc specific configuration
+    vim.cmd([[
+      " Use <Tab> for trigger completion and navigate to the next complete item
+      inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+      inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+      " Use <CR> to confirm completion, `<C-g>u` means break undo chain at current position
+      inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+                                        \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+      " Trigger completion automatically
+      let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-python']
+
+      " Configure popup behavior
+      let g:coc_suggest_autoTrigger = 'always'
+      let g:coc_suggest_triggerCompletionWait = 0
+      let g:coc_suggest_minTriggerInputLength = 1
+    ]])
+  end
+},
+-- Add this to your Lazy.nvim setup
   -- Git integration
-  { "tpope/vim-fugitive" },    -- Git commands within Neovim
-
 {
   "NeogitOrg/neogit",
   dependencies = {
